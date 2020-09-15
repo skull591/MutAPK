@@ -37,7 +37,7 @@ public class APKToolWrapper {
 
 	public static boolean buildAPK(String path, String extraPath, String appName, int mutantIndex) throws IOException, InterruptedException{
 		String decodedPath = Helper.getInstance().getCurrentDirectory();
-		Process ps = Runtime.getRuntime().exec(new String[]{"java","-jar",Paths.get(decodedPath,extraPath,"apktool.jar").toAbsolutePath().toString(),"b",Paths.get(decodedPath,path,"src").toAbsolutePath().toString(),"-o",Paths.get(decodedPath,path,appName).toAbsolutePath().toString(),"-f"});
+		Process ps = Runtime.getRuntime().exec(new String[]{"java","-jar",Paths.get(decodedPath,extraPath,"apktool.jar").toAbsolutePath().toString(),"b",Paths.get(decodedPath,path,"src").toAbsolutePath().toString(),"-o",Paths.get(decodedPath,path,appName).toAbsolutePath().toString(),"-f", "--use-aapt2"});
 		System.out.println("Building mutant "+mutantIndex+"...");
 		ps.waitFor();
 		Process pss = Runtime.getRuntime().exec(new String[]{"java","-jar",Paths.get(decodedPath,extraPath,"uber-apk-signer.jar").toAbsolutePath().toString(),"-a",Paths.get(decodedPath,path).toAbsolutePath().toString(),"-o",Paths.get(decodedPath,path).toAbsolutePath().toString()});
