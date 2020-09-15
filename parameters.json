@@ -1,0 +1,18 @@
+{
+	"apkPath": "../../TrainingSubjects/wordpress-alpha-243.apk",
+	"appName": "org.wordpress.android",
+	"mutantsFolder": "./mutants", 
+	"Output": "./output",
+	"operatorsDir": "./",
+	"multithreadExec": "true",
+	"extraPath": "./extra",
+	"selectionStrategy": "all",
+	"amountOfMutants": "10",
+	"selectionParameters":{
+		"amountMutants":"34",
+		"perOperator":"false",
+		"confidenceLevel":"85",
+		"marginError":"10",
+		"baseAPKPath":"./"
+	}
+}

@@ -1,13 +1,13 @@
 <component name="libraryTable">
   <library name="Maven: org.eclipse.platform:org.eclipse.text:3.10.200">
     <CLASSES>
-      <root url="jar://$M2_REPO$/org/eclipse/platform/org.eclipse.text/3.10.200/org.eclipse.text-3.10.200.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/org/eclipse/platform/org.eclipse.text/3.10.200/org.eclipse.text-3.10.200.jar!/" />
     </CLASSES>
     <JAVADOC>
-      <root url="jar://$M2_REPO$/org/eclipse/platform/org.eclipse.text/3.10.200/org.eclipse.text-3.10.200-javadoc.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/org/eclipse/platform/org.eclipse.text/3.10.200/org.eclipse.text-3.10.200-javadoc.jar!/" />
     </JAVADOC>
     <SOURCES>
-      <root url="jar://$M2_REPO$/org/eclipse/platform/org.eclipse.text/3.10.200/org.eclipse.text-3.10.200-sources.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/org/eclipse/platform/org.eclipse.text/3.10.200/org.eclipse.text-3.10.200-sources.jar!/" />
     </SOURCES>
   </library>
 </component>

@@ -74,7 +74,7 @@ public class MutationsProcessor {
 			System.out.println("Mutant: " + mutantIndex + " - Type: " + mutationLocation.getType());
 			operator = factory.getOperator(mutationLocation.getType().getId());
 
-			mutantRootFolder = getMutantsRootFolder() + getAppName() + "-mutant" + mutantIndex
+			mutantRootFolder = getMutantsRootFolder() + File.separator + getAppName() + "-mutant" + mutantIndex
 					+ File.separator;
 			mutantFolder = mutantRootFolder + "src" + File.separator;
 			// Create mutation
@@ -137,12 +137,12 @@ public class MutationsProcessor {
 	private void generateMutant(String extraPath, String apkName, int mutantIndex, String mutantFolder,
 			String newMutationPath, BufferedWriter wwriter, MutationLocation mutationLocation, Long mutationEnd,
 			Long mutationTime) throws IOException, InterruptedException {
-		mutantRootFolder = getMutantsRootFolder() + getAppName() + "-mutant" + mutantIndex
+		mutantRootFolder = getMutantsRootFolder() + File.separator + getAppName() + "-mutant" + mutantIndex
 				+ File.separator;
 		mutantFolder = mutantRootFolder + "src" + File.separator;
 		boolean result = APKToolWrapper.buildAPK(mutantRootFolder, extraPath, apkName, mutantIndex);
 		File mutatedFile = new File(newMutationPath);
-		mutantRootFolder = getMutantsRootFolder() + getAppName() + "-mutant" + mutantIndex
+		mutantRootFolder = getMutantsRootFolder() + File.separator + getAppName() + "-mutant" + mutantIndex
 				+ File.separator;
 		mutantFolder = mutantRootFolder + "src" + File.separator;
 		String fileName = (new File(newMutationPath)).getName();

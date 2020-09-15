@@ -1,9 +1,12 @@
 package edu.uniandes.tsdl.mutapk.helper;
 
+import java.io.BufferedReader;
 import java.io.File;
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.util.Arrays;
 
 import edu.uniandes.tsdl.mutapk.helper.Helper;
 
@@ -38,10 +41,30 @@ public class APKToolWrapper {
 	public static boolean buildAPK(String path, String extraPath, String appName, int mutantIndex) throws IOException, InterruptedException{
 		String decodedPath = Helper.getInstance().getCurrentDirectory();
 		Process ps = Runtime.getRuntime().exec(new String[]{"java","-jar",Paths.get(decodedPath,extraPath,"apktool.jar").toAbsolutePath().toString(),"b",Paths.get(decodedPath,path,"src").toAbsolutePath().toString(),"-o",Paths.get(decodedPath,path,appName).toAbsolutePath().toString(),"-f", "--use-aapt2"});
+		String[] tem = new String[]{"java","-jar",Paths.get(decodedPath,extraPath,"apktool.jar").toAbsolutePath().toString(),"b",Paths.get(decodedPath,path,"src").toAbsolutePath().toString(),"-o",Paths.get(decodedPath,path,appName).toAbsolutePath().toString(),"-f", "--use-aapt2"};
+//		System.out.println(Arrays.toString(tem));
+//		BufferedReader reader = new BufferedReader(new InputStreamReader(ps.getInputStream()));
+//		String line;
+//		while ((line = reader.readLine()) != null) {
+//			System.out.println("[build] " + line);
+//		}
+//		BufferedReader errReader = new BufferedReader(new InputStreamReader(ps.getErrorStream()));
+//		while ((line = errReader.readLine()) != null) {
+//			System.out.println("[build] " + line);
+//		}
+
 		System.out.println("Building mutant "+mutantIndex+"...");
 		ps.waitFor();
 		Process pss = Runtime.getRuntime().exec(new String[]{"java","-jar",Paths.get(decodedPath,extraPath,"uber-apk-signer.jar").toAbsolutePath().toString(),"-a",Paths.get(decodedPath,path).toAbsolutePath().toString(),"-o",Paths.get(decodedPath,path).toAbsolutePath().toString()});
 		System.out.println("Signing mutant "+mutantIndex+"...");
+//		reader = new BufferedReader(new InputStreamReader(pss.getInputStream()));
+//		while ((line = reader.readLine()) != null) {
+//			System.out.println("[sign] " + line);
+//		}
+//		errReader = new BufferedReader(new InputStreamReader(pss.getErrorStream()));
+//		while ((line = errReader.readLine()) != null) {
+//			System.out.println("[build] " + line);
+//		}
 		pss.waitFor();
 		if(Files.exists(Paths.get(decodedPath,path,appName).toAbsolutePath())) {
 			System.out.println("SUCCESS: The "+mutantIndex+" mutant APK has been generated.");
